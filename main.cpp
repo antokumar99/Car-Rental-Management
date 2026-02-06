@@ -48,5 +48,23 @@ public:
         return docs;
     }
 
+};
+
+class Car : public Vehicle {
+private:
+    int numDoors;
+public:
+    Car(int i, string b, string m, double price, int doors =4): Vehicle(i,b,m,price, "Car"), numDoors(doors){}
+
+    void displayVehicle() override {
+        Vehicle::displayVehicle();
+        cout << " | Doors: " << numDoors << endl;
+    }
+
+    string toFileString() override{
+        string docs = Vehicle::toFileString() + "," + to_string(numDoors);
+
+        return docs;
+    }
 
 };
