@@ -24,4 +24,29 @@ public:
         vehicleType = type;
     }
 
+    virtual ~Vehicle(){}
+
+    int getId() {return id;}
+    string getBrand() {return brand;}
+    string getModel() {return model;}
+    double getPrice() {return pricePerDay;}
+    string getType() {return vehicleType;}
+
+    void rentVehicle() {available = false;}
+    void returnVehicle() { available = true;}
+
+    virtual void displayVehicle(){
+        cout << vehicleType << " ID: " << id
+             << " | " << brand << " " << model
+             << " | Price per day: $" << pricePerDay
+             << " | Available: " << (available ? "Yes" : "No");
+    }
+
+    virtual string toFileString(){
+        string docs = vehicleType + "," + to_string(id) + "," + brand + "," + model + "," + to_string(pricePerDay) + "," + (available? "YES" : "NO");
+
+        return docs;
+    }
+
+
 };
