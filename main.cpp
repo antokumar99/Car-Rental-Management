@@ -74,3 +74,54 @@ public:
         return docs;
     }
 };
+
+class Motorcycle : public Vehicle
+{
+private:
+    int engineCC;
+
+public:
+    Motorcycle(int i, string b, string m, double price, int cc) : Vehicle(i, b, m, price, "Motorcycle"), engineCC(cc) {}
+
+    void displayVehicle() override
+    {
+        Vehicle::displayVehicle(),
+            cout << " | Engine: " << engineCC << "cc" << endl;
+    }
+
+    string toFileString() override
+    {
+        string docs = Vehicle::toFileString() + " , " + to_string(engineCC);
+
+        return docs;
+    }
+
+    int getEngineCC() {
+        return engineCC;
+    }
+};
+
+class Truck: public Vehicle
+{
+private:
+    double cargoCapacity;
+public:
+    Truck(int i, string b, string m, double price, double capacity): Vehicle(i,b,m,price,"Truck"), cargoCapacity(capacity) {};
+
+    void displayVehicle() override {
+        Vehicle::displayVehicle();
+        cout<< " |Cargo Capacity: "<< cargoCapacity<< " ton "<< endl;
+    }
+
+    string toFileString() override {
+
+        string docs = Vehicle::toFileString() + " , " + to_string(cargoCapacity);
+
+        return docs;
+    }
+
+    double getCargoCapacity() {
+        return cargoCapacity;
+    }
+};
+
